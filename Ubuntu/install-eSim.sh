@@ -49,6 +49,9 @@ run_version_script() {
         "25.04")
             SCRIPT="$SCRIPT_DIR/install-eSim-25.04.sh"
             ;;
+        "26.04")
+            SCRIPT="$SCRIPT_DIR/install-eSim-26.04.sh"
+            ;;
         *)
             echo "Unsupported Ubuntu version: $VERSION_ID ($FULL_VERSION)"
             exit 1
