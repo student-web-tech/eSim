@@ -1,0 +1,11 @@
+--- /tmp/Welcome.py.orig	2026-11-22 08:08:39.655037475 +0000
++++ /home/sound/eSim-2.5/src/browser/Welcome.py	2026-11-22 08:08:39.703037470 +0000
+@@ -16,7 +16,7 @@
+ 
+         # Only this block is changed:
+         # Point to welcome.html relative to the installed .exe location
+-        base_path = os.path.dirname(sys.executable) if getattr(sys, 'frozen', False) else os.path.dirname(__file__)
++        base_path = os.path.dirname(sys.executable) if getattr(sys, 'frozen', False) else os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+         html_path = os.path.abspath(os.path.join(base_path, "library/browser/welcome.html"))
+ 
+         self.browser.setSource(QtCore.QUrl.fromLocalFile(html_path))

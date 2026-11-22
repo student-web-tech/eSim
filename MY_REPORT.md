@@ -19,7 +19,7 @@
 | 6 | `libcanberra-gtk-module` removed from Ubuntu 26.04 | install-nghdl-24.04.sh line 68 | Fixed (local patch) |
 | 7 | GHDL 4.1.0 configure rejects LLVM 21 (NGHDL build) | nghdl.zip | NGHDL disabled, documented |
 | 8 | Desktop shortcut copy fails (no ~/Desktop in WSL) | install-eSim-26.04.sh | Fixed (mkdir -p "$HOME/Desktop") |
-| 9 | Welcome page path warning (minor) | src/browser | Documented |
+| 9 | Welcome page path warning (minor) | src/browser/Welcome.py | Fixed (`Ubuntu/patches/welcome_path.patch`) |
 
 ## Issue 1: Syntax error in install-eSim.sh
 - Symptom: `bash -n install-eSim.sh` gives `line 70: syntax error near unexpected token '}'`.
@@ -71,7 +71,8 @@
 
 ## Issue 9 (minor): Welcome page not found
 - Symptom: `QTextBrowser: No document for file:///.../src/browser/library/browser/welcome.html`. The Welcome pane is blank.
-- Cause: wrong relative path to welcome.html. Cosmetic.
+- Cause: `src/browser/Welcome.py` resolved `base_path` to `os.path.dirname(__file__)` (`src/browser`) when running from source instead of the eSim root directory two levels up.
+- Fix: Updated `Welcome.py` to resolve `../..` relative to `__file__` when not frozen (`Ubuntu/patches/welcome_path.patch`). Verified that the Welcome pane renders properly.
 
 ## Final result
 The main eSim 2.5 GUI installs and launches on Ubuntu 26.04.1 (Python 3.14.4, KiCad 9.0.8). NGHDL (optional) is disabled because of Issue 7.
