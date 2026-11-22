@@ -1,0 +1,11 @@
+--- /tmp/nghdl-orig/nghdl/install-nghdl.sh	2025-06-23 09:45:00.000000000 +0000
++++ nghdl/install-nghdl.sh	2026-11-22 07:11:17.000000000 +0000
+@@ -43,7 +43,7 @@
+         "23.04")
+             SCRIPT="$SCRIPT_DIR/install-nghdl-23.04.sh"
+             ;;
+-        "24.04")
++        "24.04"|"26.04")
+             SCRIPT="$SCRIPT_DIR/install-nghdl-24.04.sh"
+             ;;
+         *)

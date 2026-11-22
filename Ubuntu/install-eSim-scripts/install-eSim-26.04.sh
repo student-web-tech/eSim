@@ -398,7 +398,8 @@ if [ $option == "--install" ];then
     installDependency
     installKicad
     copyKicadLibrary
-    installNghdl
+    # TODO: NGHDL disabled on Ubuntu 26.04: GHDL 4.1.0 configure rejects LLVM 21 ("Unhandled version llvm 21.1.8"). See report, Issue 7.
+    # installNghdl
     installSky130Pdk
     createDesktopStartScript
 
