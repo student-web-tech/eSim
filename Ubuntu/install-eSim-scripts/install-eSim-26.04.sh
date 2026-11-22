@@ -303,6 +303,7 @@ function createDesktopStartScript
     # Copy desktop icon file to share applications
     sudo cp -vp esim.desktop /usr/share/applications/
     # Copy desktop icon file to Desktop
+    mkdir -p "$HOME/Desktop"
     cp -vp esim.desktop $HOME/Desktop/
 
     set +e      # Temporary disable exit on error

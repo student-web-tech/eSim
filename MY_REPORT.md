@@ -18,7 +18,7 @@
 | 5 | Package has no 25.04/26.04 script; NGHDL dispatcher rejects 26.04 | nghdl/install-nghdl.sh | Workaround applied |
 | 6 | `libcanberra-gtk-module` removed from Ubuntu 26.04 | install-nghdl-24.04.sh line 68 | Fixed (local patch) |
 | 7 | GHDL 4.1.0 configure rejects LLVM 21 (NGHDL build) | nghdl.zip | NGHDL disabled, documented |
-| 8 | Desktop shortcut copy fails (no ~/Desktop in WSL) | install-eSim-26.04.sh | Documented |
+| 8 | Desktop shortcut copy fails (no ~/Desktop in WSL) | install-eSim-26.04.sh | Fixed (mkdir -p "$HOME/Desktop") |
 | 9 | Welcome page path warning (minor) | src/browser | Documented |
 
 ## Issue 1: Syntax error in install-eSim.sh
@@ -67,7 +67,7 @@
 ## Issue 8: Desktop shortcut copy fails
 - Symptom: `cp: cannot create regular file '/home/sound/Desktop/': Not a directory`.
 - Cause: WSL has no ~/Desktop. The `esim` command and the .desktop entry were already installed.
-- Possible fix: `mkdir -p ~/Desktop` or check that it exists before copying. Environment quirk, not a core bug.
+- Fix: Added `mkdir -p "$HOME/Desktop"` before `cp -vp esim.desktop $HOME/Desktop/` in `Ubuntu/install-eSim-scripts/install-eSim-26.04.sh` and verified clean installation.
 
 ## Issue 9 (minor): Welcome page not found
 - Symptom: `QTextBrowser: No document for file:///.../src/browser/library/browser/welcome.html`. The Welcome pane is blank.
